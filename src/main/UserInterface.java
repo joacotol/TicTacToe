@@ -4,15 +4,22 @@ import java.util.Scanner;
 public class UserInterface {
 
     private Scanner scanner;
+    private CharacterList list;
 
-    public UserInterface(Scanner scanner) {
+    public UserInterface(Scanner scanner, CharacterList list) {
         this.scanner = scanner;
+        this.list = list;
     }
 
     public void start() {
-        printGrid();
+        System.out.print("\nEnter cells: ");
+        String symbols = this.scanner.nextLine();
+        this.list.addCharacters(symbols);
+        this.list.printBoard();
+
     }
 
+    // Objective 1
     public void printGrid() {
         char xChar = 'X';
         char oChar = 'O';
