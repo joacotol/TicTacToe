@@ -16,6 +16,7 @@ public class UserInterface {
         String symbols = this.scanner.nextLine();
         this.list.addCharacters(symbols);
         this.list.printBoard();
+        this.list.checkTheWinner();
 
     }
 
