@@ -42,6 +42,7 @@ public class CharacterList {
     // Objective 3
     // All methods below are for Objective 3
 
+    // Checks if a player wins the game three in a row horizontally
     public void checkHorizontal() {
         for (int i = 0; i < charList.size(); i += 3) {
             if (charList.get(i) + charList.get(i + 1) + charList.get(i + 2) == TOTALX) {
@@ -52,6 +53,7 @@ public class CharacterList {
         }
     }
 
+    // Checks if a player wins the game three in a row vertically
     public void checkVertical() {
         for (int i = 0; i < 3; i++) {
             if (charList.get(i) + charList.get(i + 3) + charList.get(i + 6) == TOTALX) {
@@ -62,6 +64,7 @@ public class CharacterList {
         }
     }
 
+    // Checks if a player wins the game three in a row diagonally
     public void checkDiagonal() {
         for (int i = 0; i < 3; i += 2) {
             // Left Diagonal
@@ -84,18 +87,28 @@ public class CharacterList {
         checkHorizontal();
         checkVertical();
         checkDiagonal();
+        // Player X Wins
         if (xWins && !oWins) {
-            System.out.println("X Wins");
+            System.out.println("X wins");
             return;
+        // Player Y Wins
         } else if (!xWins && oWins) {
-            System.out.println("O Wins");
+            System.out.println("O wins");
             return;
         }
 
+        // Draw result if no side has a three in a row and grid
+        // has no empty cells
         if (!xWins && !oWins && !hasEmptyCells()) {
             System.out.println("Draw");
+
+        // Impossible result if both players win or an imbalance
+        // of turns between the players
         } else if ((xWins && oWins) || isImpossible()){
             System.out.println("Impossible");
+
+        // Not finished results if either players has three in a row
+        // but the grid still has empty cells
         } else {
             System.out.println("Game not finished");
         }
