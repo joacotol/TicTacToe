@@ -1,8 +1,6 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Scanner;
-
 public class CharacterList {
     private ArrayList<Character> charList;
     private boolean xWins;
@@ -116,11 +114,7 @@ public class CharacterList {
             }
         }
 
-        if (xCount - oCount > 1 || oCount - xCount > 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return xCount - oCount > 1 || oCount - xCount > 1;
     }
 
     // Game not Finished
