@@ -5,6 +5,7 @@ public class CharacterList {
     private ArrayList<Character> charList;
     private boolean xWins;
     private boolean oWins;
+    // Total number of X's or O's that are three in a row
     final private int TOTALX = 264;
     final private int TOTALO = 237;
 
@@ -15,6 +16,7 @@ public class CharacterList {
     }
 
     // Objective 2
+    // Converts the string input of the user into a list of characters
     public void addCharacters(String symbols) {
         for (int i = 0; i < symbols.length(); i++) {
             char symbol = symbols.charAt(i);
@@ -22,6 +24,7 @@ public class CharacterList {
         }
     }
 
+    // Prints the game board to the terminal
     public void printBoard() {
         System.out.println("---------");
         System.out.print("| ");
@@ -115,6 +118,8 @@ public class CharacterList {
 
     }
 
+    // This method checks if there is an imbalance of turns between the players
+    // i.e. There's more X's than O's than what is normally considered.
     public boolean isImpossible() {
         int xCount = 0;
         int oCount = 0;
@@ -130,8 +135,7 @@ public class CharacterList {
         return xCount - oCount > 1 || oCount - xCount > 1;
     }
 
-    // Game not Finished
-    // when neither side has three a row but the grid still has empty cells
+    // Checks if there are empty spaces in the game board
     public boolean hasEmptyCells() {
         for (Character single : charList) {
             if (single.equals('_')) {
